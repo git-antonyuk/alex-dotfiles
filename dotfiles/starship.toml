@@ -1,0 +1,25 @@
+# Plain text symbols work with the default macOS terminal font.
+format = "$directory$git_branch$git_status$python$nodejs$rust$golang$cmd_duration$line_break$character"
+add_newline = true
+
+[directory]
+truncation_length = 3
+
+[git_branch]
+symbol = "git:"
+
+[python]
+symbol = "py:"
+
+[nodejs]
+symbol = "node:"
+
+[rust]
+symbol = "rust:"
+
+[golang]
+symbol = "go:"
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"

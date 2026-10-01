@@ -1,6 +1,9 @@
-*.vagrant
 .DS_Store
-.ansible
-*.retry
-roles*
-config.yml
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.zshrc.local
+.venv/
+node_modules/
