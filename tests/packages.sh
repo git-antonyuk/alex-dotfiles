@@ -20,7 +20,7 @@ assert_contains() { [[ "$1" == *"$2"* ]] || { echo "Missing: $2" >&2; exit 1; };
 
 # Preinstalled tools and manually installed apps must all be skipped.
 available='git gh python3 pip3 node npm pnpm go starship tsc rustc cargo'
-apps='Visual Studio Code.app|Zed.app|Raycast.app'
+apps='Visual Studio Code.app|Zed.app|Raycast.app|Slack.app|Notion.app|Notion Calendar.app'
 HOMEBREW_BUNDLE_BREW_SKIP='existing-skip'
 HOMEBREW_BUNDLE_CASK_SKIP='existing-cask'
 configure_package_skips
@@ -31,6 +31,9 @@ assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'existing-cask'
 assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'visual-studio-code'
 assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'zed'
 assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'raycast'
+assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " slack "
+assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " notion "
+assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " notion-calendar "
 install_language_tools
 [[ -z "$calls" ]]
 

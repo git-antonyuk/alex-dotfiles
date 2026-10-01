@@ -42,6 +42,18 @@ configure_package_skips() {
     HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} raycast"
     echo 'Skipping Raycast: app already exists.'
   fi
+  if app_exists 'Slack.app'; then
+    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} slack"
+    echo 'Skipping Slack: app already exists.'
+  fi
+  if app_exists 'Notion.app'; then
+    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} notion"
+    echo 'Skipping Notion: app already exists.'
+  fi
+  if app_exists 'Notion Calendar.app'; then
+    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} notion-calendar"
+    echo 'Skipping Notion Calendar: app already exists.'
+  fi
   export HOMEBREW_BUNDLE_BREW_SKIP HOMEBREW_BUNDLE_CASK_SKIP
 }
 

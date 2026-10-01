@@ -15,7 +15,7 @@ The original MIT license is preserved in `LICENSE`.
 | Rust | rustup, stable Rust, Cargo, rustfmt, and Clippy |
 | Go | Go toolchain |
 | Editors | Zed and Visual Studio Code |
-| Productivity | Raycast |
+| Productivity | Raycast, Slack, Notion, Notion Calendar |
 | Terminal | Starship, zsh-autosuggestions, zsh-syntax-highlighting |
 
 macOS supplies Zsh. The installer does not change your login shell.
@@ -27,20 +27,23 @@ From the cloned repository:
 
 ```sh
 cd ~/projects/dotfiles
-bash install.sh --plan
+make plan
 ```
 
 The preview prints the plan without installing anything or touching dotfiles.
 After reviewing it, apply the setup:
 
 ```sh
-bash install.sh
+make setup
 ```
+
+Run `make` to list the available commands. On a fresh Mac without `make`,
+run `bash install.sh` directly to start the Command Line Tools setup.
 
 The installer supports Apple Silicon and Intel Macs. It starts Apple's Command
 Line Tools installer when necessary; finish that installer and rerun the script.
 It installs Homebrew if missing (Homebrew may request your password), then the
-listed packages and apps that are missing. It skips VS Code, Zed, and Raycast when their
+listed packages and apps that are missing. It skips VS Code, Zed, Raycast, Slack, Notion, and Notion Calendar when their
 app folders exist in `/Applications` or `~/Applications`, including manual installs.
 It does not adopt those apps into Homebrew or change their permissions.
 
@@ -127,8 +130,7 @@ The original project's author attribution remains in the license and link above.
 ## Installer regression checks
 
 ```sh
-bash -n install.sh
-bash tests/packages.sh
+make check
 ```
 
 The regression checks mock command availability, app detection, npm, and rustup.
