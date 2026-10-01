@@ -20,20 +20,16 @@ assert_contains() { [[ "$1" == *"$2"* ]] || { echo "Missing: $2" >&2; exit 1; };
 
 # Preinstalled tools and manually installed apps must all be skipped.
 available='git gh python3 pip3 node npm pnpm go starship tsc rustc cargo'
-apps='Visual Studio Code.app|Zed.app|Raycast.app|Slack.app|Notion.app|Notion Calendar.app'
+apps='Visual Studio Code.app|Zed.app|Raycast.app|Slack.app|Notion.app|Notion Calendar.app|WhatsApp.app|Telegram.app'
 HOMEBREW_BUNDLE_BREW_SKIP='existing-skip'
 HOMEBREW_BUNDLE_CASK_SKIP='existing-cask'
 configure_package_skips
 for name in existing-skip git gh python node pnpm go starship rustup; do
   assert_contains " $HOMEBREW_BUNDLE_BREW_SKIP " " $name "
 done
-assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'existing-cask'
-assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'visual-studio-code'
-assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'zed'
-assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'raycast'
-assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " slack "
-assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " notion "
-assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " notion-calendar "
+for name in existing-cask visual-studio-code zed raycast slack notion notion-calendar whatsapp telegram; do
+  assert_contains " $HOMEBREW_BUNDLE_CASK_SKIP " " $name "
+done
 install_language_tools
 [[ -z "$calls" ]]
 
@@ -54,6 +50,12 @@ available='python3 node'
 HOMEBREW_BUNDLE_BREW_SKIP=''
 configure_package_skips
 [[ -z "$HOMEBREW_BUNDLE_BREW_SKIP" ]]
+
+# Only the detected app is skipped; names with spaces must stay intact.
+apps='Notion Calendar.app'
+HOMEBREW_BUNDLE_CASK_SKIP=''
+configure_package_skips
+[[ "$HOMEBREW_BUNDLE_CASK_SKIP" == ' notion-calendar' ]]
 
 # rustup proxies without an installed toolchain must trigger setup.
 available='rustup rustc cargo tsc'

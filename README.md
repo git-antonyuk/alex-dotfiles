@@ -16,6 +16,7 @@ The original MIT license is preserved in `LICENSE`.
 | Go | Go toolchain |
 | Editors | Zed and Visual Studio Code |
 | Productivity | Raycast, Slack, Notion, Notion Calendar |
+| Messaging | WhatsApp, Telegram |
 | Terminal | Starship, zsh-autosuggestions, zsh-syntax-highlighting |
 
 macOS supplies Zsh. The installer does not change your login shell.
@@ -43,8 +44,8 @@ run `bash install.sh` directly to start the Command Line Tools setup.
 The installer supports Apple Silicon and Intel Macs. It starts Apple's Command
 Line Tools installer when necessary; finish that installer and rerun the script.
 It installs Homebrew if missing (Homebrew may request your password), then the
-listed packages and apps that are missing. It skips VS Code, Zed, Raycast, Slack, Notion, and Notion Calendar when their
-app folders exist in `/Applications` or `~/Applications`, including manual installs.
+listed packages and apps that are missing. It skips VS Code, Zed, Raycast, Slack, Notion, Notion Calendar, WhatsApp, and
+Telegram when their app folders exist in `/Applications` or `~/Applications`, including manual installs.
 It does not adopt those apps into Homebrew or change their permissions.
 
 Available Git, GitHub CLI, Python (with pip3), Node.js (with npm), pnpm, Go, and Starship

@@ -21,3 +21,7 @@ cask "raycast"
 cask "slack"
 cask "notion"
 cask "notion-calendar"
+
+# Messaging
+cask "whatsapp"
+cask "telegram"

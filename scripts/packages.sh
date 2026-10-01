@@ -30,30 +30,22 @@ configure_package_skips() {
     skip_formula_if_available rustup rustc cargo
   fi
 
-  if app_exists 'Visual Studio Code.app'; then
-    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} visual-studio-code"
-    echo 'Skipping Visual Studio Code: app already exists.'
-  fi
-  if app_exists 'Zed.app'; then
-    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} zed"
-    echo 'Skipping Zed: app already exists.'
-  fi
-  if app_exists 'Raycast.app'; then
-    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} raycast"
-    echo 'Skipping Raycast: app already exists.'
-  fi
-  if app_exists 'Slack.app'; then
-    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} slack"
-    echo 'Skipping Slack: app already exists.'
-  fi
-  if app_exists 'Notion.app'; then
-    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} notion"
-    echo 'Skipping Notion: app already exists.'
-  fi
-  if app_exists 'Notion Calendar.app'; then
-    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} notion-calendar"
-    echo 'Skipping Notion Calendar: app already exists.'
-  fi
+  local cask app
+  while IFS='|' read -r cask app; do
+    if app_exists "$app.app"; then
+      HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} $cask"
+      echo "Skipping $app: app already exists."
+    fi
+  done <<'APPS'
+visual-studio-code|Visual Studio Code
+zed|Zed
+raycast|Raycast
+slack|Slack
+notion|Notion
+notion-calendar|Notion Calendar
+whatsapp|WhatsApp
+telegram|Telegram
+APPS
   export HOMEBREW_BUNDLE_BREW_SKIP HOMEBREW_BUNDLE_CASK_SKIP
 }
 
