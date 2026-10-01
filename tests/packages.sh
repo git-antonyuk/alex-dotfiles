@@ -19,17 +19,18 @@ cargo() { return "${rust_broken:-0}"; }
 assert_contains() { [[ "$1" == *"$2"* ]] || { echo "Missing: $2" >&2; exit 1; }; }
 
 # Preinstalled tools and manually installed apps must all be skipped.
-available='git gh python3 pip3 node npm go starship tsc rustc cargo'
-apps='Visual Studio Code.app|Zed.app'
+available='git gh python3 pip3 node npm pnpm go starship tsc rustc cargo'
+apps='Visual Studio Code.app|Zed.app|Raycast.app'
 HOMEBREW_BUNDLE_BREW_SKIP='existing-skip'
 HOMEBREW_BUNDLE_CASK_SKIP='existing-cask'
 configure_package_skips
-for name in existing-skip git gh python node go starship rustup; do
+for name in existing-skip git gh python node pnpm go starship rustup; do
   assert_contains " $HOMEBREW_BUNDLE_BREW_SKIP " " $name "
 done
 assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'existing-cask'
 assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'visual-studio-code'
 assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'zed'
+assert_contains "$HOMEBREW_BUNDLE_CASK_SKIP" 'raycast'
 install_language_tools
 [[ -z "$calls" ]]
 

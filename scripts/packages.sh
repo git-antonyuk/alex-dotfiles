@@ -21,6 +21,7 @@ configure_package_skips() {
   skip_formula_if_available gh gh
   skip_formula_if_available python python3 pip3
   skip_formula_if_available node node npm
+  skip_formula_if_available pnpm pnpm
   skip_formula_if_available go go
   skip_formula_if_available starship starship
   if command -v rustup >/dev/null 2>&1; then
@@ -36,6 +37,10 @@ configure_package_skips() {
   if app_exists 'Zed.app'; then
     HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} zed"
     echo 'Skipping Zed: app already exists.'
+  fi
+  if app_exists 'Raycast.app'; then
+    HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:-} raycast"
+    echo 'Skipping Raycast: app already exists.'
   fi
   export HOMEBREW_BUNDLE_BREW_SKIP HOMEBREW_BUNDLE_CASK_SKIP
 }

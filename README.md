@@ -11,10 +11,11 @@ The original MIT license is preserved in `LICENSE`.
 | --- | --- |
 | Source control | Git, GitHub CLI (installed only; no login or repository commands) |
 | Python | Python 3 and pip3 |
-| JavaScript/TypeScript | Node.js, npm, and global TypeScript (`tsc`) |
+| JavaScript/TypeScript | Node.js, npm, pnpm, and global TypeScript (`tsc`) |
 | Rust | rustup, stable Rust, Cargo, rustfmt, and Clippy |
 | Go | Go toolchain |
 | Editors | Zed and Visual Studio Code |
+| Productivity | Raycast |
 | Terminal | Starship, zsh-autosuggestions, zsh-syntax-highlighting |
 
 macOS supplies Zsh. The installer does not change your login shell.
@@ -39,11 +40,11 @@ bash install.sh
 The installer supports Apple Silicon and Intel Macs. It starts Apple's Command
 Line Tools installer when necessary; finish that installer and rerun the script.
 It installs Homebrew if missing (Homebrew may request your password), then the
-listed packages and apps that are missing. It skips VS Code and Zed when their
+listed packages and apps that are missing. It skips VS Code, Zed, and Raycast when their
 app folders exist in `/Applications` or `~/Applications`, including manual installs.
 It does not adopt those apps into Homebrew or change their permissions.
 
-Available Git, GitHub CLI, Python (with pip3), Node.js (with npm), Go, and Starship
+Available Git, GitHub CLI, Python (with pip3), Node.js (with npm), pnpm, Go, and Starship
 commands are kept. Homebrew-managed packages are not explicitly upgraded or removed;
 installing missing dependencies can still require changes. Homebrew output is verbose
 so download and installation progress is visible. The skip lists use Homebrew's
@@ -90,6 +91,7 @@ python3 -m pip --version
 pip3 --version
 node --version
 npm --version
+pnpm --version
 tsc --version
 rustc --version
 cargo --version
