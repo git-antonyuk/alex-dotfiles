@@ -49,3 +49,12 @@ if [[ -n ${_dotfiles_brew_prefix:-} ]]; then
   [[ -f "$_dotfiles_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "$_dotfiles_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 unset _dotfiles_brew_prefix
+
+# Git aliases
+alias gs='git status -sb'
+alias ga='git add .'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gsw='git switch'

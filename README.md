@@ -15,6 +15,7 @@ The original MIT license is preserved in `LICENSE`.
 | Rust | rustup, stable Rust, Cargo, rustfmt, and Clippy |
 | Go | Go toolchain |
 | Editors | Zed and Visual Studio Code |
+| VS Code extensions | Extensions listed in `vscode/extensions.txt` |
 | Productivity | Raycast, Slack, Notion, Notion Calendar |
 | Messaging | WhatsApp, Telegram |
 | Terminal | Starship, zsh-autosuggestions, zsh-syntax-highlighting |
@@ -47,6 +48,12 @@ It installs Homebrew if missing (Homebrew may request your password), then the
 listed packages and apps that are missing. It skips VS Code, Zed, Raycast, Slack, Notion, Notion Calendar, WhatsApp, and
 Telegram when their app folders exist in `/Applications` or `~/Applications`, including manual installs.
 It does not adopt those apps into Homebrew or change their permissions.
+
+Every `make setup` run installs or updates the extensions in `vscode/extensions.txt`
+using `code --install-extension <id> --force`. Keep one extension ID per line,
+without a version number; edit this file to change the list. Extensions use the
+latest compatible version. Extensions outside the list are left alone.
+The installer also finds the CLI inside the VS Code app when `code` is not on PATH.
 
 Available Git, GitHub CLI, Python (with pip3), Node.js (with npm), pnpm, Go, and Starship
 commands are kept. Homebrew-managed packages are not explicitly upgraded or removed;

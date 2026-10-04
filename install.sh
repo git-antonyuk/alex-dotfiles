@@ -8,6 +8,8 @@ case "${1:-}" in
     cat "$repo_dir/Brewfile"
     echo 'Install global TypeScript in ~/.local/npm only when tsc is missing.'
     echo 'Keep existing Rust; install stable with rustfmt and Clippy if missing.'
+    echo 'Install or update VS Code extensions from vscode/extensions.txt:'
+    cat "$repo_dir/vscode/extensions.txt"
     echo 'Back up ~/.zshrc if needed, then link dotfiles/.zshrc.'
     echo 'Existing apps/packages are kept; no brew cleanup or uninstall.'
     echo 'Run: bash install.sh'
@@ -60,6 +62,7 @@ if ! command -v rustup >/dev/null 2>&1 && [[ -x "$brew_prefix/opt/rustup/bin/rus
   export PATH="$brew_prefix/opt/rustup/bin:$PATH"
 fi
 install_language_tools
+bash "$repo_dir/scripts/vscode.sh"
 
 echo 'Linking Zsh configuration…'
 
